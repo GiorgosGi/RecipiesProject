@@ -1,0 +1,60 @@
+﻿@model MamalakisProject.Models.Recipe
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Recipe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Creator.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creator.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IngredientsPerRecipe)
+        </th>
+    </tr>
+    @foreach (var item in Model.IngredientsPerRecipe)
+    {
+<tr>
+
+    <td>
+
+        @Html.DisplayFor(modelItem => item.Ingredients.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Metric.ShortName)
+    </td>
+
+</tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
